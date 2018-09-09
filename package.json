@@ -1,0 +1,28 @@
+{
+  "name": "seat_indy_relay",
+  "version": "1.0.0",
+  "description": "hacky tool to compress & relay data",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "micro": "^9.3.3",
+    "request-promise": "^4.2.2",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  },
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjwedemyer/seat_indy_relay.git"
+  },
+  "author": "Jakob Wedemeyer <jakob@wedemeyer.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jjwedemyer/seat_indy_relay/issues"
+  },
+  "homepage": "https://github.com/jjwedemyer/seat_indy_relay#readme"
+}
