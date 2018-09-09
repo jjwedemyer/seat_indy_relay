@@ -87,6 +87,7 @@ const filter_shizzle = (jobs,type) => {
 module.exports = async (req,res) => {
   if (req.headers.token != REQ_TOKEN){
     send(res,403,"Shitlord");
+    return;
   }
   const data = await seat_data();
   console.log(data);
