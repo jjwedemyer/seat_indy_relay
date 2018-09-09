@@ -51,7 +51,7 @@ const seat_data = async () => {
     sci: [],
     reac: []
   };
-  for(let i = pages-80; i <= pages; i++){
+  for(let i = pages-66; i <= pages; i++){
     data.push.apply(data, await get_data(i));
   }
   const filtered = data.filter(x => x.status !== 'delivered');
