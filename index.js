@@ -51,14 +51,14 @@ const seat_data = async () => {
     sci: [],
     reac: []
   };
-  for(let i = pages-1; i <= pages; i++){
+  for(let i = pages-80; i <= pages; i++){
     data.push.apply(data, await get_data(i));
   }
   const filtered = data.filter(x => x.status !== 'delivered');
   const jobs = filtered.map(x =>{
     let activ = x.activity_id;
     let inst = x.installer_id;
-    activ = (activ >1 && activ < 11 ? 2:(activ == 11? 3: activ));
+    activ = (activ >1 && activ < 9 ? 2:activ);
     let ret = {
       ac: activ,
       installer: inst
@@ -67,7 +67,7 @@ const seat_data = async () => {
   });
   counts.man = filter_shizzle(jobs,1);
   counts.sci = filter_shizzle(jobs,2);
-  counts.reac = filter_shizzle(jobs,3);
+  counts.reac = filter_shizzle(jobs,9);
   return counts;
 };
 
