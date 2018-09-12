@@ -46,14 +46,17 @@ const get_pages = async () => {
 const seat_data = async () => {
   let pages = await get_pages();
   let data = [],
+  index = [],
   counts = {
     man: [],
     sci: [],
     reac: []
   };
   for(let i = pages-66; i <= pages; i++){
-    data.push.apply(data, await get_data(i));
+    index.push(i);
   }
+  data = await conc(index);
+  data = data.reduce((acc, val) => acc.concat(val), []);
   const filtered = data.filter(x => x.status !== 'delivered');
   const jobs = filtered.map(x =>{
     let activ = x.activity_id;
@@ -69,6 +72,10 @@ const seat_data = async () => {
   counts.sci = filter_shizzle(jobs,2);
   counts.reac = filter_shizzle(jobs,9);
   return counts;
+};
+
+const conc = async (ar) => {
+  return await Promise.all(ar.map(x => get_data(x)));
 };
 
 const filter_shizzle = (jobs,type) => {
@@ -90,6 +97,6 @@ module.exports = async (req,res) => {
     return;
   }
   const data = await seat_data();
-  console.log(data);
+  //console.log(data);
   send(res,200,data);
 }
